@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+@using EMMS.Areas.Manage.Models.ViewModel;
+@model Account
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>环境监测数据采集管理系统</title>
+    <link href="/Areas/Manage/Content/admin.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="/Scripts/jquery.validate.min.js"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <style>
+        #btn_log {
+            font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        @using (Html.BeginForm())
+        {
+            <div id="login_pannal">
+                <p>环境监测数据采集管理系统</p>
+
+                @Html.TextBoxFor(Model => Model.Username, new { id = "userName" })
+                @Html.PasswordFor(Model => Model.Userpw, new { id = "userPwd" })
+                @*<input id="userName" type="text" />
+            <input id="userPwd" type="password" />*@
+                <div id="logBtnContainer">
+                    <button id="btn_log" type="submit">登录</button>
+                </div>
+                <div id="errorMessage">
+                    @Html.ValidationMessageFor(Model => Model.Username)<br />
+                    @Html.ValidationMessageFor(Model => Model.Userpw)
+
+                </div>
+            </div>
+            
+        }
+        @Html.ValidationSummary()
+    </div>
+
+    <div id="bg1">
+    </div>
+</body>
+</html>

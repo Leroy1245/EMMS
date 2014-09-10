@@ -1,0 +1,40 @@
+﻿body 
+{
+    font:10.5pt/1.5 "微软雅黑";
+}
+
+#pwd-tab
+{
+    margin:10px;
+    width:98%;
+}
+
+th
+{
+    color:White;
+    background-color:#9c9c9c;
+}
+
+#pwd-tab td,
+#pwd-tab th
+{
+    height :30px;
+    line-height:30px;
+    border:1px solid #ddd;
+}
+
+#pwd-tab th
+{
+    width:150px;
+    font-weight:normal;
+    text-align:right;
+}
+
+input
+{
+    margin-left:10px;
+    width:200px;
+    border:1px solid #d9d9d9;
+    border-bottom:1px solid #c0c0c0;
+}
+

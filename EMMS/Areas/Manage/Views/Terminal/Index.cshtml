@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+@using EMMS.Models
+@model IEnumerable<Terminal>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="/areas/manage/content/Reset.css" rel="stylesheet" />
+    <link href="/areas/manage/content/List.css" rel="stylesheet" type="text/css" />
+    <link href="/Areas/Manage/Content/Common.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-1.9.1.js"></script>
+    <script>
+        function deleteConfirm(obj) {
+            if (confirm("是否确定删除此采集终端？ 该操作会级联删除该采集终端下的所有采集数据。")) {
+
+                location.href = obj.attr("href");
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div id="list">
+        <div id="nav">
+            <input id="Searchkey" type="text" name="name" value="@Request["key"]" />
+            <ul>
+                <li>
+                    <button id="btnSearch">搜索</button>
+                </li>
+            </ul>
+        </div>
+        <table id="data-list" style="font-size:10px;">
+            <tr>
+                <th class="num">ID</th>
+                <th>名称</th>
+                <th>位置</th>
+                <th>所属用户</th>
+                <th>IP</th>
+                <th>连接状态</th>
+                <th>电压</th>
+                <th class="opr">操作</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TerminalID</td>
+                    <td>@item.TerminalName</td>
+                    <td>@item.TerminalAddr</td>
+                    <td>@item.User.Username</td>
+                    <td>@item.TerminalIP</td>
+                    <td style='@(item.TerminalConnect==1?"background-color:#2dde2d; color:white;":"background-color:#df4727; color:white;")'>@(item.TerminalConnect==1?"Connected":"Disconnected")</td>
+                    <td>@item.TerminalVotal</td>
+                    <td><a href="@Url.Action("edit", "Terminal", new { terID = item.TerminalID })">编辑</a> | <a href="@Url.Action("delete", "Terminal", new { terID = item.TerminalID,key=Request["key"] })" onclick="return deleteConfirm(this);">删除</a></td>
+                </tr>
+            }
+        </table>
+        <div id="pager">
+            @*<a href="#" class="current-page">1</a>
+                        <a href="#" class="unchoice page-style">2</a>
+                        <input type="text" class="page-style" />
+                        <a href="#" class="unchoice page-style">GO</a>
+                        <span class="page-style">16 | 1/2 页</span>*@
+            @*@Html.Pager(this.Model, new PagerOptions
+           {
+                PageIndexParameterName="id",
+                Format=@"{pager}
+                        {GoToBox}
+                        {GoToButton}
+                        <span class='page-style'>{RecordCount} | {CurrentPage}/{PageCount} 页</span>"
+           })*@
+        </div>
+    </div>
+    <script>
+        var str = "@(Request["userId"]==null ? "" : (Request["userId"]))";
+        $("#btnSearch").click(function () {
+            location.href = location.pathname + "?key=" + $("#Searchkey").val() + "&userId=" + str;
+        });
+    </script>
+</body>
+</html>

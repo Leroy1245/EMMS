@@ -1,0 +1,112 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>环境监测数据采集管理系统</title>
+    <link href="/Areas/Manage/Content/Reset.css" rel="stylesheet" />
+    <link href="/Areas/Manage/Content/AdminFrame.css" rel="stylesheet" />
+    <link href="/Areas/Manage/Content/Common.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-1.9.1.js"></script>
+    <script>
+    </script>
+</head>
+<body>
+    <div id="head">
+        <p>环境监测数据采集管理系统</p>
+        <a href="@Url.Action("logOut","Admin")" id="logOut">退出</a>
+        <span id="user">@Session["UserName"],欢迎使用  @(ViewBag.nowYY)年@(ViewBag.nowMM)月@(ViewBag.nowDD)日</span>
+    </div>
+    <div id="sideMenu">
+        <span id="indexa" title="首页" addr="@Url.Action("defaultPage","Frame")">首页</span>
+        <p></p>
+        <div id="user_mg" class="fenleiContainer">
+            <h2 class="fenlei">用户管理</h2>
+            <span class="catgory" title="用户列表" addr="@Url.Action("index","admin")">用户列表</span>
+            <span class="catgory" title="添加用户" addr="@Url.Action("create","admin")">添加用户</span>
+            <span class="catgory" title="修改密码" addr="@Url.Action("chPwd","admin")">修改密码</span>
+        </div>
+        <div id="sensor_mg" class="fenleiContainer">
+            <h2 class="fenlei">采集终端管理</h2>
+            <span class="catgory" title="采集终端列表" addr="@Url.Action("index","Terminal")">采集终端列表</span>
+            <span class="catgory" title="添加采集终端" addr="@Url.Action("create","Terminal")">添加采集终端</span>
+        </div>
+        <div id="statistic_mg" class="fenleiContainer">
+            <h2 class="fenlei">数据统计</h2>
+            <span class="catgory" title="数据列表" addr="@Url.Action("index","EmdataManage")">数据列表</span>
+            <span class="catgory" title="统计图表" addr="@Url.Action("chart","EmdataManage")">统计图表</span>
+            <span class="catgory" title="日均值线" addr="@Url.Action("dayChart","EmdataManage")">日均值线</span>
+        </div>
+        <div id="alert_mg" class="fenleiContainer">
+            <h2 class="fenlei">警报信息管理</h2>
+            <span class="catgory" title="警报信息列表" addr="@Url.Action("Index","Alarm")">警报信息列表</span>
+        </div>
+
+        <div id="copyright">
+            Leroy Copyright©2013
+        </div>
+    </div>
+    <div id="mainContainer">
+        <div id="mainFrame">
+            <h1 id="frameTitle">首页</h1>
+            <iframe id="frame" src="@Url.Action("defaultPage","Frame")" scrolling="auto"></iframe>
+        </div>
+    </div>
+
+
+    <script>
+        function resize() {
+            var width = $(window).width();
+            var height = $(window).height();
+            $("#sideMenu").css("height", height - 81 + "px");
+            $("#mainContainer").css("height", height - 81 + "px");
+            $("#mainContainer").css("width", width - 345 + "px");
+            $("#frame").css("height", height - 181 + "px");
+            $("#frame").css("width", width - 415 + "px");
+        }
+        resize();
+        window.onresize = resize;
+
+        $("#sideMenu span").click(function () {
+            var title = $(this).attr("title");
+            var href = $(this).attr("addr");
+            $("#frameTitle").html(title);
+            $("#frame").attr("src", href);
+            return;
+        });
+
+        function closeAll() {
+            $("#sideMenu .fenleiContainer").css({
+                "height": "40px",
+                "background-color": "white"
+            });
+            $("#sideMenu .fenleiContainer").attr("state", "close");
+            $("#sideMenu .fenleiContainer h2").css({
+                "background": "url(/Areas/Manage/Content/Images/menu_arr_r.png) no-repeat"
+            });
+        }
+        closeAll();
+
+        $(".fenlei").click(function () {
+            closeAll();
+            var state = $(this).parent().attr("state");
+            if (state == "open") {
+                closeAll();
+                return;
+            }
+            $(this).css({
+                "background": "url(/Areas/Manage/Content/Images/menu_arr_b.png) no-repeat"
+            });
+            $(this).parent().css({
+                "height": "auto",
+                "background-color": "white"
+            });
+            $(this).parent().attr("state", "open");
+        })
+    </script>
+</body>
+</html>

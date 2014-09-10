@@ -1,0 +1,27 @@
+﻿body {
+    font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
+    
+}
+.liButton
+{
+    width:60px;
+    height :24px;
+    background:#A5A5A5;
+    margin:0 10px;
+    border:1px solid #dddcdc;
+    color:White;
+    
+}
+.liButton:hover
+{
+    background:#2ac7e1;
+    cursor:pointer;
+}
+
+.clear-fix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}

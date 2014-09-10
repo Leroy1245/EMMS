@@ -1,0 +1,160 @@
+﻿body
+{
+    font:10.5pt/1.5 "微软雅黑";
+}
+
+#search
+{
+    height:26px;
+    line-height:26px;
+    display:none;
+}
+
+#list
+{
+    margin:10px;
+}
+#nav
+{
+    height:30px;
+    width:100%;
+    background:#f4f4f4;
+    
+}
+    #nav input {
+        float:left;
+        height:20px;
+        line-height:26px;
+        margin-top:2px;
+        text-align:center;
+    }
+
+    #nav ul {
+        float:left;
+    }
+
+
+#nav ul li
+{
+    width:82px;
+    text-align:center;
+    line-height:28px;
+    float:left;
+    border:1px solid #f4f4f4;
+}
+
+#nav ul li:hover
+{
+    line-height:28px;
+    background:#f4ecf4;
+    border:1px solid #999;
+}
+
+#nav ul li button
+{
+    border:none;
+    float:left;
+    display:block;
+    color:#4f4f4f;
+    height:28px;
+    width:82px;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+#data-list
+{
+    width:100%;
+    margin-top:10px;
+}
+
+#data-list img
+{
+    width:25px;
+    height:25px;
+}
+
+#list tr th,
+#list tr td
+{
+    height:30px;
+    line-height:30px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+#list tr th
+{
+    background:url("images/bg-tab-title.gif");
+    font-weight:normal;
+}
+
+.num{width:90px;}
+.time{width:150px;}
+.opr{width:100px;}   
+.ParentName{width:90px;}
+.PostTime{width:130px;}
+.data {
+    width:90px;
+}
+
+#pager
+{
+    background-color:#ccc;
+    float:right;
+    margin-top:10px;
+    margin-bottom:30px;
+}
+
+#pager input
+{
+    float:left;
+    margin-left:5px;
+    width:23px;
+    height :23px;
+    color:#d84;
+    padding:0;
+    border:none;
+    border:1px solid #ccc;
+}
+#pager span
+{
+    width:90px;
+    height :23px;
+    margin-left:5px;
+    background-color:#ff5e00;
+    display:block;
+    text-align:center;
+    line-height:23px;
+    border:1px solid #ddd;
+    float:left;
+    color:White;
+}
+.whitefont
+{
+    color:White;
+}
+
+
+#pager a:hover
+{
+    background-color:#ff5e00;
+    color:White;
+}
+#pager a
+{
+    padding:0 8px;
+    border:1px solid #ddd;
+    float:left;
+    margin-left:5px;
+    height:23px;
+    text-align:center;
+    line-height:23px;
+    text-decoration:none;
+    color:black;
+}
+
+.selectedStyle
+{
+    background:#0df0ff;
+}

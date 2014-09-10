@@ -1,0 +1,81 @@
+﻿@{
+    Layout = null;
+}
+@using EMMS.Models
+@model IEnumerable<User>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="/areas/manage/content/Reset.css" rel="stylesheet" />
+    <link href="/areas/manage/content/List.css" rel="stylesheet" type="text/css" />
+    <link href="/Areas/Manage/Content/Common.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.9.1.js"></script>
+    <script>
+        function deleteConfirm(obj) {
+            if (confirm("是否确定删除此用户？ 该操作会级联删除该用户下的所有采集终端及数据。")) {
+                
+                location.href = obj.attr("href");
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div id="list">
+        <div id="nav">
+            <input id="Searchkey" type="text" name="name" value="@Request["key"]" />
+            <ul>
+                <li>
+                    <button id="btnSearch">搜索</button>
+                </li>
+            </ul>
+        </div>
+        <table id="data-list">
+            <tr>
+                <th class="num">用户ID</th>
+                <th>用户名</th>
+                <th>真实姓名</th>
+                <th>用户IP</th>
+                <th>采集终端个数</th>
+                <th class="opr">操作</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Username</td>
+                    <td>@item.Realname</td>
+                    <td>@item.Userip</td>
+                    <td>
+                        <a href="@Url.Action("Index","Terminal",new { userId=item.ID })">@item.MyTerminals.Count()</a>
+                    </td>
+                    <td><a href="@Url.Action("edit", "admin", new { id = item.ID })">编辑</a> | <a href="@Url.Action("delete", "admin", new { id = item.ID,key=Request["key"] })" onclick="return deleteConfirm(this);">删除</a></td>
+                </tr>
+            }
+        </table>
+        <div id="pager">
+            @*<a href="#" class="current-page">1</a>
+                        <a href="#" class="unchoice page-style">2</a>
+                        <input type="text" class="page-style" />
+                        <a href="#" class="unchoice page-style">GO</a>
+                        <span class="page-style">16 | 1/2 页</span>*@
+            @*@Html.Pager(this.Model, new PagerOptions
+           {
+                PageIndexParameterName="id",
+                Format=@"{pager}
+                        {GoToBox}
+                        {GoToButton}
+                        <span class='page-style'>{RecordCount} | {CurrentPage}/{PageCount} 页</span>"
+           })*@
+        </div>
+    </div>
+    <script>
+
+        $("#btnSearch").click(function () {
+            location.href = location.pathname + "?key=" + $("#Searchkey").val();
+        });
+    </script>
+</body>
+</html>

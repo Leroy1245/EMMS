@@ -1,0 +1,151 @@
+﻿body {
+    font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
+    font-size: 63%;
+    background-color: #2b87b0;
+}
+
+#login_pannal {
+    background: url(Images/loginp_bg.png) no-repeat;
+    height: 323px;
+    width: 471px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 70px 125px;
+    -webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+border-radius: 8px;
+    -webkit-box-shadow: #666 0px 0px 15px;
+    -moz-box-shadow: #666 0px 0px 15px;
+    box-shadow: #666 0px 0px 15px;
+}
+
+#container {
+    background: url(Images/logbg.png) no-repeat;
+    width: 950px;
+    margin: 0 auto;
+}
+
+#login_pannal p {
+    width: 471px;
+    color: white;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+}
+
+#userName {
+    outline: 0 none;
+    border: none;
+    height: 38px;
+    padding-left: 70px;
+    padding-right: 30px;
+    width: 367px;
+    background: url(Images/username_bg.png) no-repeat;
+    color: white;
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+#userPwd {
+    outline: 0 none;
+    border: none;
+    height: 38px;
+    padding-left: 70px;
+    padding-right: 30px;
+    width: 367px;
+    background: url(Images/userpwd_bg.png) no-repeat;
+    color: white;
+    font-size: 1.7em;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+#logBtnContainer {
+    width: 471px;
+    margin-top: 40px;
+}
+
+    #logBtnContainer #remMe, #logBtnContainer label {
+        float: left;
+        height: 32px;
+        line-height: 2.1;
+        font-size: 1.5em;
+        color: white;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    #logBtnContainer #remMe {
+        margin-top: 18px;
+        border: none;
+        width: 31px;
+        height: 24px;
+        background: url(Images/check_bg.png) no-repeat;
+    }
+
+    #logBtnContainer #btn_log {
+        color: white;
+        font-size: 3em;
+        font-weight: bold;
+        height: 56px;
+        width: 166px;
+        float: right;
+        border: none;
+        cursor: pointer;
+        background: url(Images/btn_bg.png) no-repeat;
+    }
+
+        #logBtnContainer #btn_log:hover {
+            background: url(Images/btn_bg_hover.png) no-repeat;
+        }
+
+        #logBtnContainer #btn_log:active {
+            background: url(Images/btn_bg_clk.png) no-repeat;
+        }
+
+#bg1 {
+    height: 600px;
+    width: 950px;
+    background: url(Images/bg1.png) no-repeat;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+#errorMessage {
+    float:left;
+    font-size:1.4em;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}

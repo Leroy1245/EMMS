@@ -1,0 +1,93 @@
+﻿@{
+    Layout = null;
+}
+@using EMMS.Areas.Manage.Models.ViewModel;
+@model editTerminalModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>编辑采集终端信息</title>
+    <link href="/Areas/Manage/Content/Reset.css" rel="stylesheet" type="text/css" />
+        <link href="/Areas/Manage/Content/create.css" rel="stylesheet" type="text/css" />
+        <link href="/Areas/Manage/Content/Validation.css" rel="stylesheet" type="text/css" />
+        <link href="/Areas/Manage/Content/Common.css" rel="stylesheet" type="text/css" />
+
+        <script src="/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="/Scripts/jquery.validate.min.js"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+<body>
+    @using (Html.BeginForm()){
+        <table id="pwd-tab">
+            <tr>
+                <th>@Html.LabelFor(p => p.TerminalID)：</th>
+                <td id="editTerID">@Html.TextBoxFor(p => p.TerminalID)
+                    @Html.ValidationMessageFor(p=>p.TerminalID)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(p=>p.TerminalName)：</th>
+                <td>@Html.TextBoxFor(p=>p.TerminalName)
+                    @Html.ValidationMessageFor(p=>p.TerminalName)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(p=>p.TerminalAddr)：</th>
+                <td>@Html.TextBoxFor(p=>p.TerminalAddr)
+                    @Html.ValidationMessageFor(p=>p.TerminalAddr)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(p=>p.TemMax)：</th>
+                <td>@Html.TextBoxFor(p=>p.TemMax)
+                    @Html.ValidationMessageFor(p=>p.TemMax)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(p=>p.HumiMax)：</th>
+                <td>@Html.TextBoxFor(p=>p.HumiMax)
+                    @Html.ValidationMessageFor(p=>p.HumiMax)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(p=>p.Pm25Max)：</th>
+                <td>@Html.TextBoxFor(p=>p.Pm25Max)
+                    @Html.ValidationMessageFor(p=>p.Pm25Max)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(p=>p.LuminMax)：</th>
+                <td>@Html.TextBoxFor(p=>p.LuminMax)
+                    @Html.ValidationMessageFor(p=>p.LuminMax)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(p=>p.UVMax)：</th>
+                <td>@Html.TextBoxFor(p=>p.UVMax)
+                    @Html.ValidationMessageFor(p=>p.UVMax)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(p=>p.GasMax)：</th>
+                <td>@Html.TextBoxFor(p=>p.GasMax)
+                    @Html.ValidationMessageFor(p=>p.GasMax)
+                </td>
+            </tr>
+            <tr>
+                <th> </th>
+                <td><button class="liButton" type="submit">提交</button></td>
+            </tr>
+        </table>
+        }
+        @Html.ValidationSummary()
+        <script>
+            $("#editTerID input").attr("readonly", "true");
+            $("#editTerID input").css("background-color", "#ccc");
+            $("#editTerID input").css("color", "#555");
+        </script>
+</body>
+</html>

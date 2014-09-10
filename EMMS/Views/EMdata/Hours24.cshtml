@@ -1,0 +1,316 @@
+﻿@{
+    Layout = null;
+}
+@using EMMS.Models;
+@using JQChart.Web.Mvc;
+@model IEnumerable<EMdata>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>环境监测数据-24小时数据</title>
+    <link href="/Content/Reset.css" rel="stylesheet" />
+    <link href="/Content/Site.css" rel="stylesheet" />
+    <link href="/Content/jquery.jqChart.css" rel="stylesheet" />
+    <link href="/Content/jquery.jqRangeSlider.css" rel="stylesheet" />
+    <link href="~/Content/themes/smoothness/jquery-ui-1.8.21.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-1.9.1.js"></script>
+    <script src="/Scripts/jquery.jqChart.min.js"></script>
+    <script src="/Scripts/jquery.jqRangeSlider.min.js"></script>
+    <!--[if IE]><script lang="javascript" type="text/javascript" src="/Scripts/excanvas.js"></script><![endif]-->
+
+    <script>
+        function request(paras) {
+            var url = location.href;
+            var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+            var paraObj = {}
+            for (i = 0; j = paraString[i]; i++) {
+                paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+            }
+            var returnValue = paraObj[paras.toLowerCase()];
+            if (typeof (returnValue) == "undefined") {
+                return "";
+            } else {
+                return returnValue;
+            }
+        }
+
+        $(document).ready(function () {
+            $('#sensorSel select').val(request("terminal"));
+            $('#sensorSel select').change(function () {
+                location.href = '/emdata/Hours24' + "?terminal=" + $(this).children('option:selected').val();
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="nav" class="clear-fix">
+        <ul class="clear-fix">
+            <li class="index">
+                @*<a href="Index.html">首页</a>*@
+                @Html.ActionLink("首页", "Index", "EMdata", new { terminal=ViewBag.TerminalID },null)
+            </li>
+            <li>
+                @*<a href="24Hour.html">24小时</a>*@
+                @Html.ActionLink("24小时","Hours24","EMdata", new { terminal=ViewBag.TerminalID },null)
+            </li>
+            <li>
+                @*<a href="Week.html">一周</a>*@
+                @Html.ActionLink("一周","Weeks","EMdata", new { terminal=ViewBag.TerminalID },null)
+            </li>
+            <li>
+                @*<a href="Month.html">一个月</a>*@
+                @Html.ActionLink("一个月","Month","EMdata", new { terminal=ViewBag.TerminalID },null)
+            </li>
+        </ul>
+        <div id="sensorSel">
+            <p>传感器选择</p>
+            @Html.DropDownList("TerminalChoice", (IEnumerable<SelectListItem>)ViewBag.TerList)
+        </div>
+        <div id="bqsm">
+            Leroy Copyright©2013
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="mulavg clear-fix" id="avg">
+            <p class="title">24小时均值</p>
+            <div class="datamul">
+                <ul>
+                    <li class="@(ViewBag.Pm25Color1)">
+                        <span>@ViewBag.TemAvg.ToString("0.0")℃</span>
+                        <p>温度</p>
+                    </li>
+                    <li class="@ViewBag.Pm25Color1">
+                        <span>@ViewBag.Pm25Avg.ToString("0.0")</span>
+                        <p>PM2.5</p>
+                    </li>
+                    <li class="@ViewBag.HumiColor">
+                        <span>@ViewBag.HumiAvg.ToString("0.0")%</span>
+                        <p>湿度</p>
+                    </li>
+                    <li class="@ViewBag.LuminColor">
+                        <span>@ViewBag.LuminAvg.ToString("0.0")</span>
+                        <p>亮度</p>
+                    </li>
+                    <li class="@ViewBag.UVColor">
+                        <span>@ViewBag.UVAvg.ToString("0.0")</span>
+                        <p>紫外线</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mulavg  clear-fix">
+            <p class="title">PM2.5</p>
+            <div class="plot">
+                <div id="pm25Chart" style="width: 780px; height: 230px;">
+                     @(Html.JQChart()
+                .Chart(Model)
+                .ID("pm25")
+                .Width(780)
+                .Height(230)
+                .Title("PM2.5")
+                .Legend(el =>el.Title("Legend"))
+                .Border(border => border.StrokeStyle("#6ba851"))
+                .Background(background => background.LinearGradient(0, 0, 0, 1).ColorStops(stop =>
+                {
+                    stop.Add(0, "#d2e6c9");
+                    stop.Add(1, "white");
+                }))
+                .Tooltips(tooltips => tooltips.TooltipsType(TooltipsType.Shared))
+                .Crosshairs(el => el.Enabled(true).VerticalLine(line => line.StrokeStyle("#cc0a0c")).HorizontalLine(false))
+                .Animation(TimeSpan.FromSeconds(2))
+                .Shadows(true)
+                .Axes(axis => axis.DateTimeAxis(Location.Bottom).ZoomEnabled(true))
+                .Series(series => series.Line().Title("PM2.5").XValues(el => el.Update).YValues(el => el.Pm25).Markers(false))
+                .Render() 
+          )
+                </div>
+            </div>
+        </div>
+        <div class="mulavg  clear-fix">
+            <p class="title">温度</p>
+            <div class="plot">
+                <div id="temChart" style="width: 780px; height: 230px;">
+                     @(Html.JQChart()
+                .Chart(Model)
+                .ID("Tem")
+                .Width(780)
+                .Height(230)
+                .Title("温度")
+                .Legend(el =>el.Title("Legend"))
+                .Border(border => border.StrokeStyle("#6ba851"))
+                .Background(background => background.LinearGradient(0, 0, 0, 1).ColorStops(stop =>
+                {
+                    stop.Add(0, "#d2e6c9");
+                    stop.Add(1, "white");
+                }))
+                .Tooltips(tooltips => tooltips.TooltipsType(TooltipsType.Shared))
+                .Crosshairs(el => el.Enabled(true).VerticalLine(line => line.StrokeStyle("#cc0a0c")).HorizontalLine(false))
+                .Animation(TimeSpan.FromSeconds(2))
+                .Shadows(true)
+                .Axes(axis => axis.DateTimeAxis(Location.Bottom)
+                                  .ZoomEnabled(true))
+                .Series(series => series.Line()
+                                        .Title("温度")
+                                        .XValues(el => el.Update)
+                                        .YValues(el => el.Temperature)
+                                        .Markers(false))
+                .Render() 
+          )
+                </div>
+            </div>
+        </div>
+        <div class="mulavg  clear-fix">
+            <p class="title">湿度</p>
+            <div class="plot">
+                <div id="humiChart" style="width: 780px; height: 230px;">
+                    @(Html.JQChart()
+                .Chart(Model)
+                .ID("Humi")
+                .Width(780)
+                .Height(230)
+                .Title("湿度")
+                .Legend(el =>el.Title("Legend"))
+                .Border(border => border.StrokeStyle("#6ba851"))
+                .Background(background => background.LinearGradient(0, 0, 0, 1).ColorStops(stop =>
+                {
+                    stop.Add(0, "#d2e6c9");
+                    stop.Add(1, "white");
+                }))
+                .Tooltips(tooltips => tooltips.TooltipsType(TooltipsType.Shared))
+                .Crosshairs(el => el.Enabled(true).VerticalLine(line => line.StrokeStyle("#cc0a0c")).HorizontalLine(false))
+                .Animation(TimeSpan.FromSeconds(2))
+                .Shadows(true)
+                .Axes(axis =>
+                    {
+                        axis.DateTimeAxis(Location.Bottom)
+                            .ZoomEnabled(true);
+                    }
+                )
+                .Series(series =>
+                    {
+                        series.Line()
+                              .Title("湿度")
+                              .XValues(el => el.Update)
+                              .YValues(el => el.Humidity)
+                              .Markers(false);
+                    }
+                )
+                .Render() 
+          )
+                </div>
+            </div>
+        </div>
+        <div class="mulavg  clear-fix">
+            <p class="title">亮度</p>
+            <div class="plot">
+                <div id="lightChart" style="width: 780px; height: 230px;">
+                    @(Html.JQChart()
+                .Chart(Model)
+                .ID("Lumin")
+                .Width(780)
+                .Height(230)
+                .Title("亮度")
+                .Legend(el =>el.Title("Legend"))
+                .Border(border => border.StrokeStyle("#6ba851"))
+                .Background(background => background.LinearGradient(0, 0, 0, 1).ColorStops(stop =>
+                {
+                    stop.Add(0, "#d2e6c9");
+                    stop.Add(1, "white");
+                }))
+                .Tooltips(tooltips => tooltips.TooltipsType(TooltipsType.Shared))
+                .Crosshairs(el => el.Enabled(true).VerticalLine(line => line.StrokeStyle("#cc0a0c")).HorizontalLine(false))
+                .Animation(TimeSpan.FromSeconds(2))
+                .Shadows(true)
+                .Axes(axis =>
+                    {
+                        axis.DateTimeAxis(Location.Bottom)
+                            .ZoomEnabled(true);
+                    }
+                )
+                .Series(series =>
+                    {
+                        series.Line()
+                              .Title("亮度")
+                              .XValues(el => el.Update)
+                              .YValues(el => el.Luminance)
+                              .Markers(false);
+                    }
+                )
+                .Render() 
+          )
+                </div>
+            </div>
+        </div>
+        <div class="mulavg  clear-fix">
+            <p class="title">紫外强度</p>
+            <div class="plot">
+                <div id="uvChart" style="width: 780px; height: 230px;">
+                    @(Html.JQChart()
+                .Chart(Model)
+                .ID("Uv")
+                .Width(780)
+                .Height(230)
+                .Title("紫外线强度")
+                .Legend(el =>el.Title("Legend"))
+                .Border(border => border.StrokeStyle("#6ba851"))
+                .Background(background => background.LinearGradient(0, 0, 0, 1).ColorStops(stop =>
+                {
+                    stop.Add(0, "#d2e6c9");
+                    stop.Add(1, "white");
+                }))
+                .Tooltips(tooltips => tooltips.TooltipsType(TooltipsType.Shared))
+                .Crosshairs(el => el.Enabled(true).VerticalLine(line => line.StrokeStyle("#cc0a0c")).HorizontalLine(false))
+                .Animation(TimeSpan.FromSeconds(2))
+                .Shadows(true)
+                .Axes(axis =>
+                    {
+                        axis.DateTimeAxis(Location.Bottom)
+                            .ZoomEnabled(true);
+                    }
+                )
+                .Series(series =>
+                    {
+                        series.Line()
+                              .Title("紫外线强度")
+                              .XValues(el => el.Update)
+                              .YValues(el => el.UV)
+                              .Markers(false);
+                    }
+                )
+                .Render() 
+          )
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script lang="javascript" type="text/javascript">
+        function bindChartStyle(chartID) {
+            $(chatID).bind('tooltipFormat', function (e, data) {
+
+                var date = data.chart.stringFormat(data.x, "ddd, mmm dS, yyyy");
+
+                var tooltip = '<b>' + date + '</b></br>' +
+                      '<span style="color:' + data.series.fillStyle + '">' + data.series.title + ': </span>' +
+                      '<b>' + data.y + '</b></br>';
+
+                return tooltip;
+            });
+        }
+
+        $(document).ready(function () {
+            bindChartStyle("#pm25");
+            bindChartStyle("#Tem");
+            bindChartStyle("#Humi");
+            bindChartStyle("#Lumin");
+            bindChartStyle("#Uv");
+        });
+    </script>
+</body>
+</html>
+

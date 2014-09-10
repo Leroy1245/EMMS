@@ -1,0 +1,118 @@
+﻿@{
+    Layout = null;
+}
+@using EMMS.Models
+@using EMMS.Areas.Manage.Models.ViewModel;
+@model EmdataSearchModel
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>警报数据列表</title>
+    <link href="/areas/manage/content/Reset.css" rel="stylesheet" />
+    <link href="/areas/manage/content/List.css" rel="stylesheet" type="text/css" />
+    <link href="/Areas/Manage/Content/Common.css" rel="stylesheet" />
+    <link href="/Areas/Manage/Content/Validation.css" rel="stylesheet" />
+    <link href="/Areas/Manage/Content/DataPicker/skin/WdatePicker.css" rel="stylesheet" />
+
+    <script src="/Areas/Manage/Content/DataPicker/WdatePicker.js"></script>
+    <script src="/Scripts/jquery-1.9.1.js"></script>
+    <script src="/Scripts/jquery.validate.min.js"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <style>
+        #nav {
+            float:left;
+            height:auto;
+            width:100%-20px;
+            margin-bottom:10px;
+            background-color:#eee;
+        }
+        #nav ul{
+            height:auto;
+            width:100%;
+            background-color:#eee;
+        }
+        #nav ul li {
+            text-align:left;
+            padding:5px;
+            float:left;
+            width:250px;
+            height:50px;
+            border:1px solid #eee;
+        }
+            #nav ul li input {
+                float:inherit;
+                line-height:20px;
+            }
+            #nav ul li p {
+                float:left;
+            }
+    </style>
+</head>
+<body>
+    <div id="list">
+        <div id="nav">
+            @using (Html.BeginForm()){
+            <ul>
+                <li>
+                    采集终端选择：
+                    @Html.DropDownListFor(p=>p.TerminalID,(IEnumerable<SelectListItem>)ViewBag.TerList)
+                </li>
+                <li>
+                    <p>起始时间：</p>
+                    @Html.EditorFor(p=>p.StartTime) <br />
+                    @Html.ValidationMessageFor(p=>p.StartTime)
+                </li>
+                <li>
+                    <p>结束时间：</p>
+                    @Html.EditorFor(p=>p.EndTime) <br />
+                    @Html.ValidationMessageFor(p=>p.EndTime)
+                </li>
+                <li style="width:90px; height:30px;">
+                    <button type="submit" class="liButton" style="color:white;margin-left:5px;">提交</button>
+                </li>
+            </ul>
+            }
+        </div>
+        <table id="data-list" style="font-size:10px;">
+            <tr>
+                <th style="width:60px;">采集终端</th>
+                <th>警报信息</th>
+                <th>是否已读</th>
+                <th style="width:120px;">警报发出时间</th>
+            </tr>
+            @foreach (var item in ViewBag.alarmData)
+            {
+                <tr style='@(item.IsRead==0?"background-color:#df4727; color:white;":"")'>
+                    <td>@item.Terminal.TerminalName</td>
+                    <td>@item.AlarmContent</td>
+                    <td>@(item.IsRead==0?"未读":"已读")</td>
+                    <td>@item.AlarmDate.ToString()</td>
+                </tr>
+            }
+        </table>
+        <div id="pager">
+            @*<a href="#" class="current-page">1</a>
+                        <a href="#" class="unchoice page-style">2</a>
+                        <input type="text" class="page-style" />
+                        <a href="#" class="unchoice page-style">GO</a>
+                        <span class="page-style">16 | 1/2 页</span>*@
+            @*@Html.Pager(this.Model, new PagerOptions
+           {
+                PageIndexParameterName="id",
+                Format=@"{pager}
+                        {GoToBox}
+                        {GoToButton}
+                        <span class='page-style'>{RecordCount} | {CurrentPage}/{PageCount} 页</span>"
+           })*@
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $("#StartTime").toggleClass("Wdate").focus(function () { WdatePicker(); });
+            $("#EndTime").toggleClass("Wdate").focus(function () { WdatePicker(); });
+        });
+    </script>
+</body>
+</html>

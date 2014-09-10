@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+}
+@using EMMS.Areas.Manage.Models.ViewModel;
+@model editModel
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>编辑用户</title>
+        <link href="/Areas/Manage/Content/Reset.css" rel="stylesheet" type="text/css" />
+        <link href="/Areas/Manage/Content/create.css" rel="stylesheet" type="text/css" />
+        <link href="/Areas/Manage/Content/Validation.css" rel="stylesheet" type="text/css" />
+        <link href="/Areas/Manage/Content/Common.css" rel="stylesheet" type="text/css" />
+
+        <script src="/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="/Scripts/jquery.validate.min.js"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    </head>
+    <body>
+        @using (Html.BeginForm()){
+        <table id="pwd-tab">
+            <tr>
+                <th>@Html.LabelFor(p => p.Username)：</th>
+                <td id="editUsername">@Html.TextBoxFor(p => p.Username)
+                    @Html.ValidationMessageFor(p=>p.Username)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(p=>p.Realname)：</th>
+                <td>@Html.TextBoxFor(p=>p.Realname)
+                    @Html.ValidationMessageFor(p=>p.Realname)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(p=>p.Usertype)：</th>
+                <td>@Html.DropDownListFor(p=>p.Usertype,(IEnumerable<SelectListItem>)ViewBag.UserType)
+                    @Html.ValidationMessageFor(p=>p.Usertype)
+
+                </td>
+            </tr>
+            <tr>
+                <th> </th>
+                <td><button class="liButton" type="submit">提交</button></td>
+            </tr>
+        </table>
+        }
+        @Html.ValidationSummary()
+        <script>
+            $("#editUsername input").attr("readonly", "true");
+            $("#editUsername input").css("background-color", "#ccc");
+            $("#editUsername input").css("color", "#555");
+        </script>
+    </body>
+</html>

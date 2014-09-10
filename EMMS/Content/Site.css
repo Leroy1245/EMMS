@@ -1,0 +1,479 @@
+﻿body {
+    font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
+    font-size: 63%;
+    
+}
+
+.clear-fix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+#container {
+    width:1003px;
+    margin:0 auto;
+}
+
+
+#nav {
+    width: 200px;
+    height: 100%;
+    position:fixed;
+    top: 0;
+    left: 0px;
+    background-color: #ecebeb;
+    border: 3px solid #dfdfdf;
+    -webkit-box-shadow: 10px 10px 25px #ccc; 
+    -moz-box-shadow: 10px 10px 25px #ccc; 
+    box-shadow: 5px 5px 15px #ccc; 
+}
+
+    #nav ul {
+        width: 200px;
+    }
+
+        #nav ul li a {
+            text-align: center;
+            line-height: 100px;
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #808080;
+            text-decoration: none;
+            display: block;
+            width: 200px;
+            height: 100px;
+            border-bottom: 2px solid #ccc;
+        }
+
+            #nav ul li a:hover {
+                background: url("Images/btn1.png") repeat-x;
+                border-bottom: 2px solid #5191a7;
+                color: white;
+            }
+
+#bqsm {
+    position:relative;
+    bottom:-100px;
+    width:200px;
+    text-align:center;
+    color:#888;
+}
+
+#main {
+    width: 800px;
+    position: absolute;
+    top: 0;
+    left: 210px;
+    border-right:2px dashed #ccc;
+    background:url("Images/bg.png");
+}
+
+#tem {
+    height: 160px;
+    width: 300px;
+    margin: 20px 20px;
+    margin-top: 50px;
+    margin-left: 50px;
+    float: left;
+}
+
+    #tem span {
+        font-size: 11em;
+    }
+
+#airq {
+    float: right;
+    height: 100px;
+    width: 270px;
+    margin-right: 60px;
+    margin-top: 40px;
+}
+
+    #airq h3 {
+        font-size: 2em;
+        font-family: "微软雅黑",Arial;
+    }
+
+    #airq p {
+        font-weight:bold;
+        font-size: 2em;
+    }
+
+        #airq p span {
+            font-size: 3.5em;
+        }
+
+#airqLevel {
+    width: 280px;
+    margin-top: 10px;
+}
+
+.level {
+    margin-right:4px;
+    float:left;
+    width: 40px;
+}
+
+#level1 {
+    float: left;
+    width: 40px;
+    height: 5px;
+    background-color: #43ce17;
+}
+
+#level2 {
+    float: left;
+    width: 40px;
+    height: 5px;
+    background-color: #efdc31;
+}
+
+#level3 {
+    float: left;
+    width: 40px;
+    height: 5px;
+    background-color: #ffaa00;
+}
+
+#level4 {
+    float: left;
+    width: 40px;
+    height: 5px;
+    background-color: #ef401a;
+}
+
+#level5 {
+    float: left;
+    width: 40px;
+    height: 5px;
+    background-color: #d20040;
+}
+
+#level6 {
+    float: left;
+    width: 40px;
+    height: 5px;
+    background-color: #9c0a4e;
+}
+
+.level span {
+    margin-top: 3px;
+    font-size:5px;
+}
+
+#airqLevel .level p {
+    margin-top: 3px;
+    width:40px;
+    float:left;
+    text-align:right;
+    font-size:0.1em;
+}
+
+
+.datamul {
+    width: 100%;
+    height: 100px;
+    float: left;
+}
+
+    .datamul ul {
+        width: 100%;
+        height: 100px;
+    }
+
+        .datamul ul li {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background: url("Images/datamul.png") no-repeat;
+            margin-left: 57px;
+        }
+
+            .datamul ul li:hover {
+                background: url("Images/datamul_hover.png");
+            }
+
+            .datamul ul li.green {
+                background: url("Images/datamulGreen.png");
+            }
+
+                .datamul ul li.green:hover {
+                    background: url("Images/datamulGreen_hover.png");
+                }
+                .datamul ul li.blue {
+                background: url("Images/datamulBlue.png");
+            }
+
+                .datamul ul li.blue:hover {
+                    background: url("Images/datamulBlue_hover.png");
+                }
+            .datamul ul li.yellow {
+                background: url("Images/datamulYel.png");
+            }
+
+                .datamul ul li.yellow:hover {
+                    background: url("Images/datamulYel_hover.png");
+                }
+            .datamul ul li.orange {
+                background: url("Images/datamulOrg.png");
+            }
+
+                .datamul ul li.orange:hover {
+                    background: url("Images/datamulOrg_hover.png");
+                }
+            .datamul ul li.red {
+                background: url("Images/datamulRed.png");
+            }
+
+                .datamul ul li.red:hover {
+                    background: url("Images/datamulRed_hover.png");
+                }
+            .datamul ul li.P6 {
+                background: url("Images/datamulP6.png");
+            }
+
+                .datamul ul li.P6:hover {
+                    background: url("Images/datamulP6_hover.png");
+                }
+            .datamul ul li.P5 {
+                background: url("Images/datamulP5.png");
+            }
+
+                .datamul ul li.P5:hover {
+                    background: url("Images/datamulP5_hover.png");
+                }
+            .datamul ul li.P4 {
+                background: url("Images/datamulP4.png");
+            }
+
+                .datamul ul li.P4:hover {
+                    background: url("Images/datamulP4_hover.png");
+                }
+            .datamul ul li.P3 {
+                background: url("Images/datamulP3.png");
+            }
+
+                .datamul ul li.P3:hover {
+                    background: url("Images/datamulP3_hover.png");
+                }
+            .datamul ul li.P2 {
+                background: url("Images/datamulP2.png");
+            }
+
+                .datamul ul li.P2:hover {
+                    background: url("Images/datamulP2_hover.png");
+                }
+            .datamul ul li.P1 {
+                background: url("Images/datamulP1.png");
+            }
+
+                .datamul ul li.P1:hover {
+                    background: url("Images/datamulP1_hover.png");
+                }
+            .datamul ul li.L5 {
+                background: url("Images/datamulL5.png");
+            }
+
+                .datamul ul li.L5:hover {
+                    background: url("Images/datamulL5_hover.png");
+                }
+            .datamul ul li.L4 {
+                background: url("Images/datamulL4.png");
+            }
+
+                .datamul ul li.L4:hover {
+                    background: url("Images/datamulL4_hover.png");
+                }
+            .datamul ul li.L3 {
+                background: url("Images/datamulL3.png");
+            }
+
+                .datamul ul li.L3:hover {
+                    background: url("Images/datamulL3_hover.png");
+                }
+            .datamul ul li.L2 {
+                background: url("Images/datamulL2.png");
+            }
+
+                .datamul ul li.L2:hover {
+                    background: url("Images/datamulL2_hover.png");
+                }
+            .datamul ul li.L1 {
+                background: url("Images/datamulL1.png");
+            }
+
+                .datamul ul li.L1:hover {
+                    background: url("Images/datamulL1_hover.png");
+                }
+
+                .datamul ul li.S5 {
+                background: url("Images/datamulS5.png");
+            }
+
+                .datamul ul li.S5:hover {
+                    background: url("Images/datamulS5_hover.png");
+                }
+            .datamul ul li.S4 {
+                background: url("Images/datamulS4.png");
+            }
+
+                .datamul ul li.S4:hover {
+                    background: url("Images/datamulS4_hover.png");
+                }
+            .datamul ul li.S3 {
+                background: url("Images/datamulS3.png");
+            }
+
+                .datamul ul li.S3:hover {
+                    background: url("Images/datamulS3_hover.png");
+                }
+            .datamul ul li.S2 {
+                background: url("Images/datamulS2.png");
+            }
+
+                .datamul ul li.S2:hover {
+                    background: url("Images/datamulS2_hover.png");
+                }
+            .datamul ul li.S1 {
+                background: url("Images/datamulS1.png");
+            }
+
+                .datamul ul li.S1:hover {
+                    background: url("Images/datamulS1_hover.png");
+                }
+
+            .datamul ul li.Z5 {
+                background: url("Images/datamulZ5.png");
+            }
+
+                .datamul ul li.Z5:hover {
+                    background: url("Images/datamulZ5_hover.png");
+                }
+            .datamul ul li.Z4 {
+                background: url("Images/datamulZ4.png");
+            }
+
+                .datamul ul li.Z4:hover {
+                    background: url("Images/datamulZ4_hover.png");
+                }
+            .datamul ul li.Z3 {
+                background: url("Images/datamulZ3.png");
+            }
+
+                .datamul ul li.Z3:hover {
+                    background: url("Images/datamulZ3_hover.png");
+                }
+            .datamul ul li.Z2 {
+                background: url("Images/datamulZ2.png");
+            }
+
+                .datamul ul li.Z2:hover {
+                    background: url("Images/datamulZ2_hover.png");
+                }
+            .datamul ul li.Z1 {
+                background: url("Images/datamulZ1.png");
+            }
+
+                .datamul ul li.Z1:hover {
+                    background: url("Images/datamulZ1_hover.png");
+                }
+            .datamul ul li span {
+                display: block;
+                width: 100px;
+                font-size: 2.0em;
+                line-height: 1.6em;
+                text-align: center;
+                font-weight: bold;
+                color: white;
+                margin: 10px 0;
+            }
+
+            .datamul ul li p {
+                display: block;
+                width: 100px;
+                font-size: 2.0em;
+                line-height: 1.6em;
+                text-align: center;
+                font-weight: bold;
+                color: white;
+                margin: 10px 0;
+            }
+
+.tips {
+    width: 800px;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 20px;
+}
+
+    .tips p {
+        padding-left: 40px;
+        font-size: 1.8em;
+        line-height: 1.66;
+        color: #555;
+        font-weight: bold;
+    }
+
+        .tips p span {
+            color: #ff5454;
+        }
+
+.plot {
+    width: 780px;
+    height: 230px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+    .plot #zd {
+        bottom:1px;
+        right:10px;
+        z-index:100000;
+        background-color:white;
+        display:block;
+        width:120px;
+        height:15px;
+        position:absolute;
+    }
+.mulavg {
+    margin-bottom:30px;
+}
+.mulavg p.title {
+    color:#0a4829;
+    font-size:3em;
+    text-align:center;
+    font-weight:bold;
+    line-height:2;
+    border-top:1px solid #888;
+    border-bottom:1px solid #888;
+    background-color:#83b2bd;
+}
+    .mulavg p.title:hover {
+        background-color:#079894;
+        color:white;
+    }
+.mulavg .datamul {
+    margin-top:40px;
+}
+#sensorSel {
+    width:160px;
+    margin-top:40px;
+    padding:0 20px;
+    display:block;
+}
+    #sensorSel p {
+        font-size:2em;
+        line-height:2;
+        font-weight:bold;
+        color:#555;
+        width:160px;
+        text-align:center;
+    }
+    #sensorSel select {
+        width:160px;
+    }

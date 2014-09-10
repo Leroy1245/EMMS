@@ -1,0 +1,168 @@
+﻿html {
+    height:100%;
+}
+body {
+    font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
+    font-size:63%;
+    background-color:#ecf0f1;
+    height:100%;
+}
+#head {
+    background:url(/Areas/Manage/Content/Images/adm_tit_bg.png) repeat-x;
+    height:69px;
+    width:100%;
+    border-bottom:2px solid #444;
+}
+    
+    #head p {
+        margin-left:20px;
+        float:left;
+        font-size:2.5em;
+        line-height:2.76;
+        color:white;
+
+    }
+    #head span,#head a {
+        float:right;
+    }
+    #head #user {
+        margin-right:20px;
+        color:white;
+        font-size:1.4em;
+        line-height:5.64;
+    }
+    #head #logOut {
+        margin-right:20px;
+        color:white;
+        font-size:1.4em;
+        line-height:5.64;
+    }
+
+#sideMenu {
+    float:left;
+    width:324px;
+    height:700px;
+}
+
+#mainContainer {
+    float:right;
+    height:100%;
+}
+#mainFrame {
+    -webkit-border-radius: 9px;
+-moz-border-radius: 9px;
+border-radius: 9px;
+    margin:20px;
+    border:2px solid #6d6868;
+    background-color:white;
+    overflow:hidden;
+    -webkit-box-shadow: 10px 10px 25px #ccc; 
+    -moz-box-shadow: 10px 10px 25px #ccc; 
+    box-shadow: 5px 5px 15px #ccc; 
+}
+    #mainFrame h1 {
+        width:100%;
+        height:35px;
+        background-color:#cdcece;
+        border-bottom:2px solid #b4b3b3;
+        font-size:1.8em;
+        line-height:1.94;
+        padding-left:30px;
+        color:#696c6c;
+        font-weight:bold;
+    }
+    #mainFrame iframe {
+        padding:10px 10px;
+        width:100%;
+        height:100%;
+    }
+
+#indexa {
+    height:54px;
+    width:306px;
+    background:url(/Areas/Manage/Content/Images/menu_ind_bg.png) no-repeat;
+    float:left;
+    margin-top:20px;
+    margin-left:20px;
+    font-size:2.3em;
+    color:#828e8c;
+    text-align:center;
+    line-height:2.34;
+    font-weight:bold;
+    cursor:pointer;
+}
+#indexa:hover {
+        background:url(/Areas/Manage/Content/Images/menu_ind_bg_hover.png);
+        color:white;
+    }
+
+.fenleiContainer {
+    width:302px;
+    border:2px solid #919090;
+    float:left;
+    margin-top:10px;
+    margin-left:20px;
+    background-color:white;
+    -webkit-border-radius: 9px;
+-moz-border-radius: 9px;
+border-radius: 9px;
+padding-bottom:10px;
+    overflow:hidden;
+    -webkit-box-shadow: 10px 10px 25px #ccc; 
+    -moz-box-shadow: 10px 10px 25px #ccc; 
+    box-shadow: 5px 5px 15px #ccc; 
+}
+
+#sideMenu h2.fenlei {
+    height:50px;
+    width:306px;
+    font-size:2.3em;
+    color:#828e8c;
+    text-align:center;
+    line-height:2.17;
+    font-weight:bold;
+    cursor:pointer;
+    background:url(/Areas/Manage/Content/Images/menu_arr_r.png) no-repeat;
+    
+}
+    #sideMenu h2.fenlei:hover {
+        background-color:#cdcece;
+        
+    }
+
+
+#sideMenu span.catgory {
+    display:block;
+    height:30px;
+    width:242px;
+    font-size:1.8em;
+    color:#828e8c;
+    text-align:left;
+    line-height:1.66;
+    font-weight:bold;
+    cursor:pointer;
+    text-align:center;
+}
+    #sideMenu span.catgory:hover {
+        background:url(/Areas/Manage/Content/Images/menu_pt.png) no-repeat;
+        background-position:right;
+    }
+#sideMenu p {
+    width:306px;
+    border:1px solid #8e9091;
+    float:left;
+    margin-left:20px;
+    margin-top:10px;
+    -webkit-box-shadow: 10px 10px 25px #ccc; 
+    -moz-box-shadow: 10px 10px 25px #ccc; 
+    box-shadow: 5px 5px 15px #ccc;
+}
+
+#copyright {
+    margin-right:20px;
+    position:absolute;
+    bottom:10px;
+    left:110px;
+    color:#555;
+    font-size:1.4em;
+}

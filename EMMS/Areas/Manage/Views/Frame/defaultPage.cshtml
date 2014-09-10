@@ -1,0 +1,158 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="/Areas/Manage/Content/Reset.css" rel="stylesheet" />
+    <style>
+        html, body {
+            font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
+            height: 100%;
+            width: 100%;
+            font-size: 63%;
+        }
+        body {
+            background:url(/Areas/Manage/Content/Images/leaf.png) no-repeat;
+            background-position:bottom right;
+        }
+
+
+        h1 {
+            width: 500px;
+            height: 50px;
+            padding-left: 20px;
+            color: #65755e;
+            font-size: 3.4em;
+            line-height: 50px;
+            float: left;
+            font-weight: bold;
+        }
+
+        #serverInfo ul {
+            float: left;
+            margin-left: 20px;
+            width: 100%-50px;
+        }
+
+            #serverInfo ul li {
+                float: left;
+                width: 280px;
+                margin-top: 30px;
+                height: 71px;
+                line-height: 71px;
+            }
+
+                #serverInfo ul li span {
+                    float: left;
+                    height: 71px;
+                    width: 100px;
+                    font-size: 2.4em;
+                    line-height: 71px;
+                    font-weight: bold;
+                    text-align: center;
+                    -webkit-border-radius: 9px;
+                    -moz-border-radius: 9px;
+                    border-radius: 9px;
+                    color: white;
+                }
+
+                    #serverInfo ul li span:hover {
+                        filter: alpha(opacity=80);
+                        -moz-opacity: 0.8;
+                        -khtml-opacity: 0.8;
+                        opacity: 0.8;
+                    }
+
+                #serverInfo ul li p {
+                    float: left;
+                    width: 150px;
+                    line-height: 71px;
+                    padding-left: 20px;
+                    font-size: 3em;
+                    color: #555;
+                }
+        #serverInfo {
+            float:left;
+        }
+        #alarm {
+            float:left;
+            font-size:20px;
+            margin-top:20px;
+            margin-left:20px;
+            color:#df4727;
+            font-weight:bold;
+        }
+    </style>
+    <script type="text/javascript">
+        var myDate = new Date();
+        myDate.setFullYear(@(ViewBag.nowYY));
+        myDate.setMonth(@(ViewBag.nowMonth));
+        myDate.setDate(@(ViewBag.nowDD));
+        myDate.setHours(@(ViewBag.nowhh));
+        myDate.setMinutes(@(ViewBag.nowmm));
+        myDate.setSeconds(@(ViewBag.nowss));
+        function getTime() {
+            myDate.setSeconds(myDate.getSeconds() + 1);
+            var m = myDate.getMonth();
+            m = m > 9 ? m : "0" + m;
+            var d = myDate.getDate();
+            d = d > 9 ? d : "0" + d;
+            var h = myDate.getHours();
+            h = h > 9 ? h : "0" + h;
+            var M = myDate.getMinutes();
+            M = M > 9 ? M : "0" + M;
+            var s = myDate.getSeconds();
+            s = s > 9 ? s : "0" + s;
+            var NowTime = myDate.getFullYear() + "年" + m + "月" + d + "日" + " " + h + ":" + M + ":" + s;
+            document.getElementById("timeArea").innerText = NowTime.toLocaleString();
+            window.setTimeout("getTime()", 1000);
+        }
+</script> 
+</head>
+<body onload="getTime()">
+    <h1>服务器信息</h1>
+    <div id="serverInfo">
+        <ul>
+            <li>
+                <span style="background-color: #11cfe7;">CPU温度
+                </span>
+                <p>@ViewBag.cpuTem℃</p>
+            </li>
+            <li>
+                <span style="background-color: #01c792;">硬盘温度
+                </span>
+                <p>@ViewBag.diskTem℃</p>
+            </li>
+            <li>
+                <span style="background-color: #0da6e2;">已运行时间
+                </span>
+                <p>@ViewBag.runHour : @ViewBag.runMin : @ViewBag.runSec</p>
+            </li>
+            <li>
+                <span style="background-color: #ee3382;">IP地址
+                </span>
+                <p>@ViewBag.IPAddress</p>
+            </li>
+            <li>
+                <span style="background-color: #f3b90f;">内存占用
+                </span>
+                <p>@ViewBag.memUsed MB</p>
+            </li>
+            <li>
+                <span style="background-color: #94cd26;">服务器时间
+                </span>
+                <p id="timeArea" style="line-height: 35px;"></p>
+            </li>
+
+        </ul>
+    </div>
+    <div id="alarm" style="display:@(ViewBag.alarmCount>0?"block;":"none;")">
+        您有 <a href="@Url.Action("Index","Alarm")">@ViewBag.alarmCount</a> 条警报信息未读！！
+    </div>
+</body>
+</html>
+
